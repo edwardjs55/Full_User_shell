@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>{% block title %}{% endblock %}</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'hello/site.css' %}"/>
+</head>
+
+<body>
+<div class="container">
+<div class="navbar justify-content-start ">
+    <a href="{% url 'home' %}" class="navbar-brand ps-3">Home</a>
+    <a href="{% url 'about' %}" class="navbar-item">About</a>
+    <a href="{% url 'contact' %}" class="navbar-item">Contact</a>
+    <a href="{% url 'user' %}" class="navbar-item">User</a>
+</div>
+
+<div class="body-content">
+    {% block content %}
+    {% endblock %}
+    <hr/>
+    <footer>
+        <p>&copy; 2024</p>
+    </footer>
+</div>
+</div>
+</body>
+</html>

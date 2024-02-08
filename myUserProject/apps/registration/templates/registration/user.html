@@ -1,0 +1,60 @@
+{% extends "registration/layout.html" %}
+{% block title %}
+    User
+{% endblock %}
+{% block content %}
+
+<style>
+    label {
+        font-weight: bold;
+    }
+</style>
+
+<div id='wrapper' class="container col-md-6">
+    <center>
+        <h1 style="margin:15px 0px">Current User Profile</h1>
+    </center>
+    <div>
+        {% if messages %}
+            <ul>
+            {% for message in messages %}
+                <li>{{ message}} </li>
+            {% endfor %}
+            </ul>
+        {% endif%}
+        <form action="update" method="POST">            
+            <!-- <h3>Register</h3> -->
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="name">User Name</label>
+                <input type="text" class="form-control" name='name' id='name' value= '{{ user.name }}' >
+            </div>
+            <div class="form-group">                
+                <label for="alias">User Alias</label>
+                <input type="text" class="form-control"  name='alias' id='alias' value='{{ user.alias }}'>
+            </div>
+            <div class="form-group">
+                <label for="email">User Email</label>
+                <input type="text" class="form-control"  name='email' id='email' value='{{ user.email }}'>
+            </div>
+            <!-- <div class="form-group">
+                <label for="password">Password</label>
+                <input type="text"  class="form-control"  name="password" id="password" value='Password1'>
+            </div>            
+            <div class="form-group">
+                <label for="confirm">Confirm</label>
+                <input type="text" class="form-control" placeholder="re-enter password"  name="confirm" id="confirm">
+            </div> -->  
+            <div class="form-group">
+                <label for="birthdate">User Birthday</label>            
+                <input type="date" class="form-control"  name='birthdate' id='birthdate' value= "{{ bday }}" >
+            </div>
+
+            <div class="form-group row">
+                <input class="form-control btn regbutton mt-2 col mx-2"  type="submit" Value="Update">
+                <button class="form-control btn regbutton mt-2 col mx-2"   type="submit" formaction="index">Cancel</button>
+            </div>         
+        </form>
+    </div>    
+</div>
+{% endblock %}

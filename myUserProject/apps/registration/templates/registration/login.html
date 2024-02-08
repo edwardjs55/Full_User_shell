@@ -1,0 +1,43 @@
+{% extends "registration/layout.html" %}
+{% block title %}
+    Login
+{% endblock %}
+{% block content %}
+
+<style>
+    label {
+        font-weight: bold;
+    }
+</style>
+
+<div id='wrapper' class="container col-md-6">
+    <center>
+        <h1 style="margin:15px 0px">User Login</h1>
+    </center> 
+    <div>
+        {% if messages %}
+            <ul>
+            {% for message in messages %}
+                <li>{{ message}} </li>
+            {% endfor %}
+            </ul>
+        {% endif%}  
+            <form action="login" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="email">Email ID</label>
+                    <input type="text" class="form-control" name="email" id="email" value='Will@bro.com'>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="text" class="form-control" name="password" id="password" value='Password1'>            
+                </div>
+                
+                <div class="form-group">
+                    <input type="submit" class="form-control btn regbutton" value="Login">
+                </div>
+            </form>    
+    </div>
+</div>
+{% endblock %}

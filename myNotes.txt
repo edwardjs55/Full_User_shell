@@ -1,0 +1,8 @@
+EJS 2/2/2024 Friday 3;45PM
+
+Creating a customized User Registration Shell package for copying and using in all my
+Future Django projects.
+
+
+
+

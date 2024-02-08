@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %}</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'registration/site.css' %}"/>
+</head>
+
+<body>
+<!-- <nav class="navbar bg-primary navbar-dark"> -->
+  <div class="container">
+    <div class="navbar justify-content-start">
+      <a href="{% url 'home' %}" class="navbar-brand ps-3">Home</a>
+      <a href="{% url 'index' %}" class="navbar-item">Register</a>
+      <a href="{% url 'gotologin' %}" class="navbar-item">Login</a>
+      <a href="{% url 'logout' %}" class="navbar-item">Logout</a>
+      <a href="{% url 'user' %}" class="navbar-item">User</a>
+  </div>
+
+    <!-- <ul class="nav nav-bar">
+        <li class="nav-item">
+          <a class="navbar-brand " href="{% url 'home' %}">WebSiteName</a>
+        </li>
+        <li class="nav-item">
+          <a class="active " href="{% url 'index' %}">REGISTER</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link link-light" href="{% url 'gotologin' %}">LOGIN</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link link-light" href="{% url 'logout' %}">LOGOUT</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link link-light" href="{% url 'user' %}">USER</a>
+        </li>
+      </ul>    -->
+  </div>
+<!-- </nav> -->
+
+<div class="body-content">
+    {% block content %}
+    {% endblock %}
+    <hr/>
+    <footer>
+        <p>&copy; 2018</p>
+    </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}                
+    <link rel="stylesheet" type="text/css" href="{%static 'registration/css/style.css' %}">
+    <title>Registration</title>
+</head>
+<body>
+    <div id='wrapper'>
+        <h2>Welcome !</h2>
+        <div>
+            {% if messages %}
+                <ul>
+                {% for message in messages %}
+                    <li>{{ message}} </li>
+                {% endfor %}
+                </ul>
+            {% endif%}
+            <form action="/register" method="POST">
+                <h3>Register</h3>
+                {% csrf_token %}
+                <label for="name">Name</label>
+                <input type="text" name='name' id='name' value='Villbig'>
+                <label for="alias">Alias</label>
+                <input type="text" name='alias' id='alias' value='MrBig'>
+                <label for="email">User Name</label>
+                <input type="text" name='email' id='email' value='Will@bro.com'>
+                <!-- <label for="email">Email</label>
+                <input type="text" name='email' id='email' value='Will@ejs.com'> -->
+                <label for="password">Password</label>
+                <input type="text" name="password" id="password" value='Password1'>
+                <label for="confirm">Confirm</label>
+                <input type="text" name="confirm" id="confirm">
+                <label for="birthdate">Birth Date</label>
+                <input type="date" name='birthdate' id='birthdate'>
+                <input type="submit" Value="Register">
+            </form>
+        </div>
+        <div>
+                <form action="/login" method="POST">
+                    <h3>Login</h3>
+                    {% csrf_token %}
+                    <label for="email">Email ID</label>
+                    <input type="text" name="email" id="email" value='Will@bro.com'>
+                    <label for="password">Password</label>
+                    <input type="textdir" name="password" id="password" value='Password1'>            
+                    <input type="submit" value="Login">
+                </form>
+
+        </div>
+    </div>
+</body>
+</html>
