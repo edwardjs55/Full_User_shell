@@ -67,7 +67,19 @@ def update(request):
                 "alias": request.POST['alias'],
                 "email": request.POST['email'],
                 "birthdate": request.POST['birthdate'],
-                "user_id": request.session['user_id'],               
+                "user_id": request.session['user_id'],
+                "firstname": request.POST['firstname'],
+                "middlename": request.POST['middlename'],
+                "lastname": request.POST['lastname'],
+                #"my_hello": request.POST['my_hello'],
+                "address": request.POST['address'],
+                "address2": request.POST['address2'],
+                "city": request.POST['city'],
+                "state": request.POST['state'],
+                "zip": request.POST['zip'],
+                "phone": request.POST['phone'],
+                "cell": request.POST['cell']
+                #"location": request.POST['location'],               
             }
         result = User.objects.update_validator(post_data)
         print( result)
@@ -92,6 +104,9 @@ def register(request):
                 "birthdate": request.POST['birthdate'],
                 "password": request.POST['password'],
                 "confirm": request.POST['confirm'],
+
+                
+
             }
         result = User.objects.register_validator(post_data)
         print( result)

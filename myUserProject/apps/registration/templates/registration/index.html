@@ -16,9 +16,9 @@
     </center>
     <div>
         {% if messages %}
-            <ul>
+            <ul style="position: absolute;top: 70px;">
             {% for message in messages %}
-                <li>{{ message}} </li>
+                <li style="color: red;">{{ message}} </li>
             {% endfor %}
             </ul>
         {% endif%}

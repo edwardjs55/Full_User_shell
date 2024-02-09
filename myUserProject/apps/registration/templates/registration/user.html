@@ -1,6 +1,6 @@
 {% extends "registration/layout.html" %}
 {% block title %}
-    User
+User
 {% endblock %}
 {% block content %}
 
@@ -10,51 +10,97 @@
     }
 </style>
 
-<div id='wrapper' class="container col-md-6">
+<div id='wrapper' class="container">
     <center>
         <h1 style="margin:15px 0px">Current User Profile</h1>
     </center>
-    <div>
-        {% if messages %}
-            <ul>
-            {% for message in messages %}
-                <li>{{ message}} </li>
-            {% endfor %}
-            </ul>
-        {% endif%}
-        <form action="update" method="POST">            
-            <!-- <h3>Register</h3> -->
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="name">User Name</label>
-                <input type="text" class="form-control" name='name' id='name' value= '{{ user.name }}' >
-            </div>
-            <div class="form-group">                
-                <label for="alias">User Alias</label>
-                <input type="text" class="form-control"  name='alias' id='alias' value='{{ user.alias }}'>
-            </div>
-            <div class="form-group">
-                <label for="email">User Email</label>
-                <input type="text" class="form-control"  name='email' id='email' value='{{ user.email }}'>
-            </div>
-            <!-- <div class="form-group">
+    {% if messages %}
+    <ul style="position: absolute; top: 70px;">
+        {% for message in messages %}
+        <li style="color: red;">{{ message}} </li>
+        {% endfor %}
+    </ul>
+    {% endif%}
+    <form action="update" method="POST">
+        <div class="row">
+            <div class="col">
+                <!-- <h3>Register</h3> -->
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="name">User Name</label>
+                    <input type="text" class="form-control" name='name' id='name' value='{{ user.name }}'>
+                </div>
+                <div class="form-group">
+                    <label for="alias">User Alias</label>
+                    <input type="text" class="form-control" name='alias' id='alias' value='{{ user.alias }}'>
+                </div>
+                <div class="form-group">
+                    <label for="email">User Email</label>
+                    <input type="text" class="form-control" name='email' id='email' value='{{ user.email }}'>
+                </div>
+                <div class="form-group">
+                    <label for="birthdate">User Birthday</label>
+                    <input type="date" class="form-control" name='birthdate' id='birthdate' value="{{ bday }}">
+                </div>
+                <div class="form-group">
+                    <label for="cell">Cell Phone</label>
+                    <input type="tel" placeholder="xxx-xxx-xxxx" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" name='cell' id='cell' value='{{ user.cell }}'>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Home Phone</label>
+                    <input type="tel" placeholder="xxx-xxx-xxxx" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" name='phone' id='phone' value='{{ user.phone }}'>
+                </div>
+                <!-- <div class="form-group">
                 <label for="password">Password</label>
                 <input type="text"  class="form-control"  name="password" id="password" value='Password1'>
-            </div>            
-            <div class="form-group">
+                </div>            
+                <div class="form-group">
                 <label for="confirm">Confirm</label>
                 <input type="text" class="form-control" placeholder="re-enter password"  name="confirm" id="confirm">
-            </div> -->  
-            <div class="form-group">
-                <label for="birthdate">User Birthday</label>            
-                <input type="date" class="form-control"  name='birthdate' id='birthdate' value= "{{ bday }}" >
+                </div> -->
             </div>
-
+            <div class="col">
+                <div class="form-group">
+                    <label for="lastname">Last Name</label>
+                    <input type="text" class="form-control" name='lastname' id='lastname' value='{{ user.lastname }}'>
+                </div>
+                <div class="form-group">
+                    <label for="firstname">First Name</label>
+                    <input type="text" class="form-control" name='firstname' id='firstname' value='{{ user.firstname }}'>
+                </div>
+                <div class="form-group">
+                    <label for="middlename">Middle Name</label>
+                    <input type="text" class="form-control" name='middlename' id='middlename' value='{{ user.middlename }}'>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" name='address' id='address' value='{{ user.address }}'>
+                </div>
+                <div class="form-group">
+                    <label for="address2">Address2</label>
+                    <input type="text" class="form-control" name='address2' id='address2' value='{{ user.address2 }}'>
+                </div>
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="text" class="form-control" name='city' id='city' value='{{ user.city }}'>
+                </div>
+                <div class="row">
+                    <div class="form-group col">
+                        <label for="state">State</label>
+                        <input type="text" class="form-control" name='state' id='state' value='{{ user.state }}'>
+                    </div>
+                    <div class="form-group col">
+                        <label for="zip">Zip Code</label>
+                        <input type="text" class="form-control" name='zip' id='zip' value='{{ user.zip }}'>
+                    </div>
+                </div>
+            </div>
             <div class="form-group row">
-                <input class="form-control btn regbutton mt-2 col mx-2"  type="submit" Value="Update">
-                <button class="form-control btn regbutton mt-2 col mx-2"   type="submit" formaction="index">Cancel</button>
-            </div>         
-        </form>
-    </div>    
+                    <input class="form-control btn regbutton mt-2 col mx-2" type="submit" Value="Update">
+                    <button class="form-control btn regbutton mt-2 col mx-2 " type="submit"
+                    formaction="index">Cancel</button>
+            </div>
+        </div>
+    </form>
 </div>
 {% endblock %}

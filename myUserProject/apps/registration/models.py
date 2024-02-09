@@ -121,8 +121,20 @@ class UserManager(models.Manager):
            U = User.objects.get(id= postdata['user_id'])
            U.name = postdata['name']
            U.alias = postdata['alias']
-           U.email = postdata['email']
+           U.email = postdata['email']           
            U.birthdate = postdata['birthdate']
+           U.firstname = postdata['firstname']
+           U.middlename = postdata['middlename']
+           U.lastname = postdata['lastname']
+           #U.my_hello = postdata['my_hello']
+           U.address = postdata['address']
+           U.address2 = postdata['address2']
+           U.city = postdata['city']
+           U.state = postdata['state']
+           U.zip = postdata['zip']
+           U.phone = postdata['phone']
+           U.cell = postdata['cell']
+          
            U.save()
            return [True]
         
@@ -130,12 +142,32 @@ class UserManager(models.Manager):
             
 
 class User(models.Model):
-    name = models.CharField(max_length=255)
-    alias = models.CharField(max_length=255)
-    email = models.CharField(max_length=255)
-    birthdate = models.DateField()   # DateTimeField
-    password = models.CharField(max_length=255)
+    # name = models.CharField(max_length=255)
+    # alias = models.CharField(max_length=255)
+    # email = models.CharField(max_length=255)    # ? unique=True
+    # birthdate = models.DateField()   # DateTimeField
+    # password = models.CharField(max_length=255)
 
+    #email2 = models.EmailField(max_length=75) # 254 default
+    
+    name = models.CharField(max_length=50)
+    alias = models.CharField(max_length=50)         # SlugField()   Az99_-
+    password = models.CharField(max_length=255)
+    email = models.CharField(max_length=75)         # models.EmailField(max_length=75) # 254 default
+    birthdate = models.DateField()   
+
+    firstname = models.CharField(max_length=50, blank=True)
+    middlename = models.CharField(max_length=50, blank=True)
+    lastname = models.CharField(max_length=50, blank=True)
+    my_hello = models.CharField(max_length=255, blank=True)
+    address = models.CharField(max_length=128, blank=True)
+    address2 = models.CharField(max_length=128, blank=True)
+    city = models.CharField(max_length=128, blank=True)
+    state = models.CharField(max_length=128, blank=True)
+    zip = models.CharField(max_length=128, blank=True)
+    phone = models.CharField(max_length=15, blank=True)
+    cell = models.CharField(max_length=15, blank=True)
+    location = models.CharField(max_length=128, blank=True)
     # friends = models.ManyToManyField('self',related_name='friends_with')
 
     created_at = models.DateTimeField(auto_now_add = True)
